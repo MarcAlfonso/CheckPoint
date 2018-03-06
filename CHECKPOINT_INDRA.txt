@@ -1,0 +1,8 @@
+Hacer función move para comprobar que funcione el checkpoint
+
+El player se mueve y cuando colisiona con el checkpoint,
+este cambia de color, entonces cuando el player cae al vacio(collider para comprobar que muere),
+pasamos a true un booleano llamado p.e: isDead, y otro llamado isCheckpoint = true;
+
+Una vez el jugador cae no tiene que destruirse el gameobject, tenemos que hacer setEnable = false, 
+entonces cambiamos la posicion del jugador a la del checkpoint y volvemos a poner el setEnable = true;
