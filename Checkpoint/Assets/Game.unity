@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 1387618776}
   - component: {fileID: 1387618775}
   - component: {fileID: 1387618774}
+  - component: {fileID: 1387618780}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -433,6 +434,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1387618780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1387618773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e70ef474419c0469edf4e2e69b3c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  jumpSpeed: 20
+  check_point: {fileID: 1084187962}
+  player: {fileID: 1387618773}
 --- !u!1 &1824866180
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,13 +536,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2025142724}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82e70ef474419c0469edf4e2e69b3c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
   jumpSpeed: 20
+  check_point: {fileID: 0}
   player: {fileID: 1387618773}
 --- !u!4 &2025142726
 Transform:

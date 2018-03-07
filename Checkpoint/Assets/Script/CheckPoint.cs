@@ -5,6 +5,7 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour {
     public float moveSpeed = 10f;
     public float jumpSpeed = 20f;
+    public GameObject check_point;
     public GameObject player;
 
 	// Use this for initialization
@@ -38,6 +39,14 @@ public class CheckPoint : MonoBehaviour {
         else if(Input.GetKey(KeyCode.Space))
         {
             player.transform.Translate(Vector3.up * Time.deltaTime * jumpSpeed);
+        }
+    }
+    
+    void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.name == "CheckPoint")
+        {
+            Debug.Log("Has chocado con el checkpoint!");
         }
     }
 }
