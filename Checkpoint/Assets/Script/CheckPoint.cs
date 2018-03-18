@@ -69,6 +69,7 @@ public class CheckPoint : MonoBehaviour
         if (other.collider.tag == "death")
         {
             isCollidedDeath = true;
+            transform.position = Vector3.zero;
         }
         if (isCollidedDeath && isCollidedCheckP)
         {
