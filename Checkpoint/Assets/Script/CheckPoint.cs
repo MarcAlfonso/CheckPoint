@@ -4,33 +4,37 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
+    //Public variables
     public float moveSpeed = 20f;
     public float jumpForce = 20f;
-    public GameObject checkPoint;
+    public GameObject checkPoint, ObjToRend;
 
-    //private bool isActivated = false;
+    //Private variables
     private Vector3 checkPos, playerPos;
-    private Renderer rend;
+    private Renderer rend, rend2;
     private Color col;
     private bool isCollidedDeath = false;
     private bool isCollidedCheckP = false;
     private bool cpActivated = false;
     private bool isColorChanged = false;
+    private Transform playerTransform;
 
-    // Use this for initialization
+
     void Start()
     {
         checkPos = checkPoint.transform.position;
         playerPos = transform.position;
         rend = checkPoint.GetComponent<Renderer>();
+        rend2 = ObjToRend.GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         Movement();
     }
 
+    //Movement function
     void Movement()
     {
         if (Input.GetKey(KeyCode.W))
@@ -54,19 +58,19 @@ public class CheckPoint : MonoBehaviour
             transform.Translate(Vector3.up * Time.deltaTime * jumpForce);
         }
     }
-    public IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(5);
-    }
 
-    void OnCollisionEnter(Collision other)
+
+    //Function to detect the collisions between the Player and the Checkpoint / Death
+    void OnTriggerEnter(Collider col)
     {
-        if (other.collider.tag == "checkpoint")
+        if (col.GetComponent<Collider>().tag == "checkpoint")
         {
             rend.material.color = Color.cyan;
+            rend2.material.color = Color.cyan;
+            
             isCollidedCheckP = true;
         }
-        if (other.collider.tag == "death")
+        if (col.GetComponent<Collider>().tag == "death")
         {
             isCollidedDeath = true;
             transform.position = Vector3.zero;
@@ -82,6 +86,7 @@ public class CheckPoint : MonoBehaviour
     }
 
 
+    //Function to activate the checkpoint
     void ActivateCheckPoint()
     {
         cpActivated = true;
