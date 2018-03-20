@@ -6,13 +6,13 @@ public class CheckPoint : MonoBehaviour
 {
     //Public variables
     public GameObject checkPoint, ObjToRend;
+    public bool isCollidedCheckP = false;
 
     //Private variables
     private Vector3 checkPos, playerPos;
     private Renderer rend, rend2;
     private Color col;
     private bool isCollidedDeath = false;
-    private bool isCollidedCheckP = false;
     private bool cpActivated = false;
     private bool isColorChanged = false;
 
@@ -30,8 +30,7 @@ public class CheckPoint : MonoBehaviour
     {
         if (col.GetComponent<Collider>().tag == "checkpoint")
         {
-            rend.material.color = Color.cyan;
-            rend2.material.color = Color.cyan;
+            ChangeColor();
             
             isCollidedCheckP = true;
         }
@@ -50,7 +49,6 @@ public class CheckPoint : MonoBehaviour
 
     }
 
-
     //Function to activate the checkpoint
     void ActivateCheckPoint()
     {
@@ -61,5 +59,11 @@ public class CheckPoint : MonoBehaviour
     void DieAndSpawn()
     {
         transform.position = checkPoint.transform.position;
+    }
+
+    public void ChangeColor()
+    {
+        rend.material.color = Color.cyan;
+        rend2.material.color = Color.cyan;
     }
 }

@@ -4,49 +4,83 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.UI;
 
-
-[Serializable]
 public class GameData : MonoBehaviour {
 
     //PUBLIC VARIABLES
     public GameObject player;
+    public Button save, load;
+    public CheckPoint cp;
     
 
 
     //PRIVATE VARIABLES
-    private string filename = "/player.dat";
+    private string filename = "/player.sav";
 
 
 
     
-    void Start () {
+    void Start ()
+    {
+        save = GetComponent<Button>();
+        load = GetComponent<Button>();
+    }
+
+    void Update()
+    {
         SaveGame();
         LoadGame();
-
     }
 	
+    public void OnClickSave()
+    {
+        Debug.Log("you clicked the save button!!");
+        SaveGame();
+    }
+
+    public void OnClickLoad()
+    {
+        Debug.Log("you clicked the load button!!!");
+        LoadGame();
+    }
+
 
     public void SaveGame()
     {
+        if(cp.isCollidedCheckP)
+        {
+            
+        }
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + filename);
+        FileStream file = File.Create(Application.persistentDataPath + "/player.dat");
 
-        Player data = new Player();
-        
-        bf.Serialize(file, data.currentPos);
+        Data data = new Data();
+        data.pos = player.transform.position;
+
+        bf.Serialize(file, data);
         file.Close();
 
     }
     
-    private void LoadGame()
+    public void LoadGame()
     {
-        if (File.Exists(Application.persistentDataPath + filename))
+        if (File.Exists(Application.persistentDataPath + "/player.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream stream = new FileStream(Application.persistentDataPath + filename, FileMode.Open);
-            Player data = bf.Deserialize(stream) as Player;
-            stream.Close();
+            FileStream file = File.Open(Application.persistentDataPath + "/player.dat", FileMode.Open);
+
+            Data data = (Data)bf.Deserialize(file);
+
+            player.transform.position = data.pos;
+            file.Close();
         }
+    }
+    
+
+    [Serializable]
+    class Data
+    {
+        public Vector3 pos;
     }
 }

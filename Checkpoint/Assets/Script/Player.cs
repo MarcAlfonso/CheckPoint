@@ -6,7 +6,7 @@ using System;
 
 
 
-[System.Serializable]
+[Serializable]
 public class Player : MonoBehaviour {
 
     public float speed = 20f;
@@ -45,8 +45,4 @@ public class Player : MonoBehaviour {
             transform.Translate(Vector3.up * Time.deltaTime * force);
         }
     }
-}
-
-internal class SerializeAttribute : Attribute
-{
 }
