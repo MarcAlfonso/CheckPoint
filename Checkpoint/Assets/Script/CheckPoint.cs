@@ -5,8 +5,6 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     //Public variables
-    public float moveSpeed = 20f;
-    public float jumpForce = 20f;
     public GameObject checkPoint, ObjToRend;
 
     //Private variables
@@ -17,7 +15,6 @@ public class CheckPoint : MonoBehaviour
     private bool isCollidedCheckP = false;
     private bool cpActivated = false;
     private bool isColorChanged = false;
-    private Transform playerTransform;
 
 
     void Start()
@@ -27,39 +24,7 @@ public class CheckPoint : MonoBehaviour
         rend = checkPoint.GetComponent<Renderer>();
         rend2 = ObjToRend.GetComponent<Renderer>();
     }
-
-
-    void Update()
-    {
-        Movement();
-    }
-
-    //Movement function
-    void Movement()
-    {
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(Vector3.back * Time.deltaTime * moveSpeed);
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(Vector3.left * Time.deltaTime * moveSpeed);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(Vector3.right * Time.deltaTime * moveSpeed);
-        }
-        else if (Input.GetKey(KeyCode.Space))
-        {
-            transform.Translate(Vector3.up * Time.deltaTime * jumpForce);
-        }
-    }
-
-
+    
     //Function to detect the collisions between the Player and the Checkpoint / Death
     void OnTriggerEnter(Collider col)
     {
