@@ -1370,9 +1370,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1387618773}
-  save: {fileID: 0}
-  load: {fileID: 0}
-  cp: {fileID: 0}
+  save: {fileID: 139483287}
+  load: {fileID: 26174381}
 --- !u!4 &2025142726
 Transform:
   m_ObjectHideFlags: 0

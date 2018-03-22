@@ -11,12 +11,12 @@ public class GameData : MonoBehaviour {
     //PUBLIC VARIABLES
     public GameObject player;
     public Button save, load;
-    public CheckPoint cp;
+    //public CheckPoint cp;
     
 
 
     //PRIVATE VARIABLES
-    private string filename = "/player.sav";
+    private string path = "/player.dat";
 
 
 
@@ -29,8 +29,7 @@ public class GameData : MonoBehaviour {
 
     void Update()
     {
-        SaveGame();
-        LoadGame();
+
     }
 	
     public void OnClickSave()
@@ -41,34 +40,31 @@ public class GameData : MonoBehaviour {
 
     public void OnClickLoad()
     {
-        Debug.Log("you clicked the load button!!!");
-        LoadGame();
+        /*Debug.Log("you clicked the load button!!!");
+        LoadGame();*/
     }
 
 
     public void SaveGame()
     {
-        if(cp.isCollidedCheckP)
-        {
-            
-        }
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/player.dat");
+        FileStream file = File.Create(Application.persistentDataPath + "/test.dat");
 
-        Data data = new Data();
-        data.pos = player.transform.position;
-
-        bf.Serialize(file, data);
+        /*Data data = new Data();
+        data.pos = player.transform.position;  */
+        bf.Serialize(file, transform.position);
         file.Close();
 
-    }
+   
+    
+}
     
     public void LoadGame()
     {
         if (File.Exists(Application.persistentDataPath + "/player.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/player.dat", FileMode.Open);
+            FileStream file = File.OpenWrite(Application.persistentDataPath + path);
 
             Data data = (Data)bf.Deserialize(file);
 
