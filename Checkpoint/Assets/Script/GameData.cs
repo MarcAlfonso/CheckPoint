@@ -6,32 +6,35 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameData : MonoBehaviour {
+public class GameData : MonoBehaviour
+{
 
     //PUBLIC VARIABLES
     public GameObject player;
     public Button save, load;
-    //public CheckPoint cp;
     
+    //public CheckPoint cp;
+
 
 
     //PRIVATE VARIABLES
-    private string path = "/player.dat";
+    private string path = "SaveGame/save.sav";
+    private Player pa;
+    private Vector3 playerPosition;
 
 
-
-    
-    void Start ()
+    void Start()
     {
         save = GetComponent<Button>();
         load = GetComponent<Button>();
+        playerPosition = player.transform.position;
     }
 
     void Update()
     {
 
     }
-	
+
     public void OnClickSave()
     {
         Debug.Log("you clicked the save button!!");
@@ -40,43 +43,47 @@ public class GameData : MonoBehaviour {
 
     public void OnClickLoad()
     {
-        /*Debug.Log("you clicked the load button!!!");
-        LoadGame();*/
+        Debug.Log("you clicked the load button!!!");
+        LoadGame();
     }
 
 
     public void SaveGame()
     {
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/test.dat");
+        if (!Directory.Exists("SaveGame"))
+        {
+            Directory.CreateDirectory("SaveGame");
+        }
 
-        /*Data data = new Data();
-        data.pos = player.transform.position;  */
-        bf.Serialize(file, transform.position);
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream file = File.Create(path);
+
+        Data data = new Data();
+        data.pos = playerPosition;
+
+        formatter.Serialize(file, data.pos);
         file.Close();
+    }
 
-   
-    
-}
-    
     public void LoadGame()
     {
-        if (File.Exists(Application.persistentDataPath + "/player.dat"))
+        if (File.Exists(Application.persistentDataPath + path))
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.OpenWrite(Application.persistentDataPath + path);
 
             Data data = (Data)bf.Deserialize(file);
 
-            player.transform.position = data.pos;
+            playerPosition = data.pos;
             file.Close();
         }
     }
-    
+
 
     [Serializable]
     class Data
     {
-        public Vector3 pos;
+        public Vector3 pos = new Vector3(1,2,1);
+        public int score = 50;
     }
 }

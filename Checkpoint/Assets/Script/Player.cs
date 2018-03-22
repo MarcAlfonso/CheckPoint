@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
     public float speed = 20f;
     public float force = 20f;
     public Vector3 currentPos;
+    [HideInInspector]public int score = 0;
     	
     void Start()
     {

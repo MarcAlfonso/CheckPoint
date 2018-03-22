@@ -1,0 +1,8 @@
+1. IOException - Sharing violation
+parece ser que hay el mismo archivo save.sav abierto 2 veces y peta por esto
+
+
+
+
+2. Vector3 is not serializable
+el Vector3 pos no esta serializado y eso que la clase sí esta serializadad mediante el [Serializale] encima de la definicion de la clase
