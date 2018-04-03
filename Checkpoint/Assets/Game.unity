@@ -581,7 +581,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 583293599}
   m_LocalRotation: {x: 0.33092836, y: -0.0026268607, z: 0.0009212114, w: 0.9436518}
-  m_LocalPosition: {x: 0.2, y: 83.6, z: -111}
+  m_LocalPosition: {x: 0, y: 61, z: -82.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -953,7 +953,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1387618773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.48462963}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2500002, y: 1.2500004, z: 1.2500004}
   m_Children: []
   m_Father: {fileID: 0}
@@ -970,9 +970,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36884d09d6d36847844d4e8722d1962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  force: 20
+  move_speed: 20
+  jump_force: 20
   currentPos: {x: 0, y: 0, z: 0}
+  score: 0
 --- !u!1 &1621949820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,6 +1373,7 @@ MonoBehaviour:
   player: {fileID: 1387618773}
   save: {fileID: 139483287}
   load: {fileID: 26174381}
+  cp: {fileID: 0}
 --- !u!4 &2025142726
 Transform:
   m_ObjectHideFlags: 0
