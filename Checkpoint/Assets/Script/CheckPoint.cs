@@ -15,6 +15,8 @@ public class CheckPoint : MonoBehaviour
     private bool isCollidedDeath = false;
     private bool cpActivated = false;
     private bool isColorChanged = false;
+    private GameData gd;
+    
 
 
     void Start()
@@ -23,18 +25,19 @@ public class CheckPoint : MonoBehaviour
         playerPos = transform.position;
         rend = checkPoint.GetComponent<Renderer>();
         rend2 = ObjToRend.GetComponent<Renderer>();
+        gd = FindObjectOfType<GameData>();
     }
     
     //Function to detect the collisions between the Player and the Checkpoint / Death
     void OnTriggerEnter(Collider col)
     {
-        if (col.GetComponent<Collider>().tag == "checkpoint")
+        if (col.tag == "checkpoint")
         {
             ChangeColor();
-            
+            gd.SaveGame();            
             isCollidedCheckP = true;
         }
-        if (col.GetComponent<Collider>().tag == "death")
+        if (col.tag == "death")
         {
             isCollidedDeath = true;
             transform.position = Vector3.zero;

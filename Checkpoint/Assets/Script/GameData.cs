@@ -27,7 +27,6 @@ public class GameData : MonoBehaviour
     {
         save = GetComponent<Button>();
         load = GetComponent<Button>();
-        playerPosition = player.transform.position;
     }
 
     void Update()
@@ -50,6 +49,7 @@ public class GameData : MonoBehaviour
 
     public void SaveGame()
     {
+        playerPosition = player.transform.position;
         if (!Directory.Exists("SaveGame"))
         {
             Directory.CreateDirectory("SaveGame");
@@ -59,22 +59,24 @@ public class GameData : MonoBehaviour
         FileStream file = File.Create(path);
 
         Data data = new Data();
-        data.pos = playerPosition;
+        data.pos.x = playerPosition.x;
+        data.pos.y = playerPosition.y;
+        data.pos.z = playerPosition.z;
 
-        formatter.Serialize(file, data.pos);
+        formatter.Serialize(file, data);
         file.Close();
     }
 
     public void LoadGame()
     {
-        if (File.Exists(Application.persistentDataPath + path))
+        if (File.Exists(path))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.OpenWrite(Application.persistentDataPath + path);
+            FileStream file = File.OpenRead(path);
 
             Data data = (Data)bf.Deserialize(file);
 
-            playerPosition = data.pos;
+            player.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
             file.Close();
         }
     }
@@ -83,6 +85,17 @@ public class GameData : MonoBehaviour
     [Serializable]
     class Data
     {
+        [Serializable]
+        public struct Vector3 {
+            public float x, y, z;
+
+            public Vector3(float _x, float _y, float _z)
+            {
+                x = _x;
+                y = _y;
+                z = _z;
+            }
+        }
         public Vector3 pos = new Vector3(1,2,1);
         public int score = 50;
     }
