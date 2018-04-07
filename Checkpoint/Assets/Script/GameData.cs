@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -11,54 +9,44 @@ public class GameData : MonoBehaviour
 
     //PUBLIC VARIABLES
     public GameObject player;
-    public Button save, load;
-    
-    //public CheckPoint cp;
-
+    public Button load;
 
 
     //PRIVATE VARIABLES
-    private string path = "SaveGame/save.sav";
+    private string path = "save.sav";
     private Player pa;
     private Vector3 playerPosition;
 
 
+    //INICIALIZAMOS EL LOAD AL COMPONENTE BOTON
     void Start()
     {
-        save = GetComponent<Button>();
         load = GetComponent<Button>();
     }
 
-    void Update()
-    {
-
-    }
-
-    public void OnClickSave()
-    {
-        Debug.Log("you clicked the save button!!");
-        SaveGame();
-    }
-
+    //AL PRESIONAR EL BOTON LOAD LLAMAMOS A LA FUNCION QUE CARGA EL FICHERO CON LA NUEVA POSICION
     public void OnClickLoad()
     {
-        Debug.Log("you clicked the load button!!!");
         LoadGame();
     }
 
 
+    //FUNCIÓN PARA GUARDAR LA POSICIÓN DEL PLAYER
     public void SaveGame()
     {
         playerPosition = player.transform.position;
+        //SI LA CARPETA NO EXISTE LA CREAMOS
         if (!Directory.Exists("SaveGame"))
         {
             Directory.CreateDirectory("SaveGame");
         }
 
+        //CREAMOS EL FICHERO QUE CONTENDRA LOS DATOS
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream file = File.Create(path);
-
+        FileStream file = File.Create(path); //PATH = "SAVE.SAV"
+         
         Data data = new Data();
+        //GUARDAMOS LA POSICION DEL PLAYER EN DATA.POS
         data.pos.x = playerPosition.x;
         data.pos.y = playerPosition.y;
         data.pos.z = playerPosition.z;
@@ -67,8 +55,10 @@ public class GameData : MonoBehaviour
         file.Close();
     }
 
+    //FUNCIÓN PARA CARGAR LA POSICION DEL PLAYER QUE PREVIAMENTE HEMOS GUARDADO EN 3 VARIABLES (DATA.POS)
     public void LoadGame()
     {
+        //SI EL FICHERO EXISTE LO ABRIMOS Y LO LEEMOS
         if (File.Exists(path))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -76,12 +66,14 @@ public class GameData : MonoBehaviour
 
             Data data = (Data)bf.Deserialize(file);
 
+            //CAMBIAMOS LA POSICION DEL PLAYER POR LA POSICION GUARDADA
             player.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
             file.Close();
         }
     }
 
 
+    //SERIALIZAMOS LA CLASE PARA PODER GUARDAR LOS DATOS
     [Serializable]
     class Data
     {
