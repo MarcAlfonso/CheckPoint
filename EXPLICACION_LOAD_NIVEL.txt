@@ -1,0 +1,5 @@
+LOAD Y SAVE DE LOS ENEMIGOS??
+
+	- Cuando matas un enemigo y luego haces un load el enemigo no aparece de nuevo.
+	- Comprobar si el enemigo esta vivo o muerto.
+	
