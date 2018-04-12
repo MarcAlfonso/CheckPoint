@@ -55,12 +55,14 @@ public class GameData : MonoBehaviour
 
         formatter.Serialize(file, data);
         file.Close();
+
     }
 
     //FUNCIÓN PARA CARGAR LA POSICION DEL PLAYER QUE PREVIAMENTE HEMOS GUARDADO EN 3 VARIABLES (DATA.POS)
     public void LoadGame()
     {
         //SI EL FICHERO EXISTE LO ABRIMOS Y LO LEEMOS
+
         if (File.Exists(path))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -70,7 +72,6 @@ public class GameData : MonoBehaviour
 
             //CAMBIAMOS LA POSICION DEL PLAYER POR LA POSICION GUARDADA
             player.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
-            /**/
             file.Close();
         }
     }

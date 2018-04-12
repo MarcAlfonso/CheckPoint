@@ -49,9 +49,11 @@ public class Player : MonoBehaviour {
     {
         if(other.gameObject.tag == "enemy" && isAlive)
         {
+            
             for (int i = 0; i < enemies.Length; i++)
             {
-                Destroy(enemies[0]);
+                if (enemies[i] == other.gameObject)
+                    Destroy(other.gameObject);
                 isAlive = false;
             }
         }
