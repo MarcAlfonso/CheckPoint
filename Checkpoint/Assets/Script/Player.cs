@@ -27,13 +27,13 @@ public class Player : MonoBehaviour {
         {
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(Vector3.back * Time.deltaTime * speed);
-        }
         else if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(Vector3.left * Time.deltaTime * speed);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(Vector3.back * Time.deltaTime * speed);
         }
         else if (Input.GetKey(KeyCode.D))
         {
