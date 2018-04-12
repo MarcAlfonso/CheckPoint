@@ -1,5 +1,8 @@
 LOAD Y SAVE DE LOS ENEMIGOS??
 
-	- Cuando matas un enemigo y luego haces un load el enemigo no aparece de nuevo.
-	- Comprobar si el enemigo esta vivo o muerto.
-	
+	- Cuando matas un enemigo y luego haces un load el enemigo no aparece de nuevo. EN PRINCIPIO ESTA HECHO
+	- Comprobar si el enemigo esta vivo o muerto.  HECHO
+	- Guardar en el enemigo en el fichero save.sav
+	- Cuando cierras unity y lo abres de nuevo, le das al load SIN MOVERTE previamente, y te cambia a la posicion guardada y 
+	  el enemigo desaparece
+		

@@ -16,7 +16,7 @@ public class GameData : MonoBehaviour
     private string path = "save.sav";
     private Player pa;
     private Vector3 playerPosition;
-
+    private bool isEnemyAlive = true;
 
     //INICIALIZAMOS EL LOAD AL COMPONENTE BOTON
     void Start()
@@ -35,6 +35,7 @@ public class GameData : MonoBehaviour
     public void SaveGame()
     {
         playerPosition = player.transform.position;
+        //isEnemyAlive = pa.isAlive;
         //SI LA CARPETA NO EXISTE LA CREAMOS
         if (!Directory.Exists("SaveGame"))
         {
@@ -46,10 +47,11 @@ public class GameData : MonoBehaviour
         FileStream file = File.Create(path); //PATH = "SAVE.SAV"
          
         Data data = new Data();
-        //GUARDAMOS LA POSICION DEL PLAYER EN DATA.POS
+        //GUARDAMOS LOS DATOS DEL PLAYER
         data.pos.x = playerPosition.x;
         data.pos.y = playerPosition.y;
         data.pos.z = playerPosition.z;
+        /*data.isAlive = isEnemyAlive;*/
 
         formatter.Serialize(file, data);
         file.Close();
@@ -68,6 +70,7 @@ public class GameData : MonoBehaviour
 
             //CAMBIAMOS LA POSICION DEL PLAYER POR LA POSICION GUARDADA
             player.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
+            /**/
             file.Close();
         }
     }
@@ -90,5 +93,6 @@ public class GameData : MonoBehaviour
         }
         public Vector3 pos = new Vector3(1,2,1);
         public int score = 50;
+        public bool isAlive = true;
     }
 }

@@ -12,17 +12,13 @@ public class Player : MonoBehaviour {
     public float speed = 20f;
     public float force = 20f;
     [HideInInspector]public int score = 0;
-    public GameObject[] enemy;
+    public GameObject[] enemies;
 
-    private bool isAlive = true; //Miramos si el enemigo está vivo
+    [HideInInspector]public bool isAlive = true; //Miramos si el enemigo está vivo
     	
-    void Start()
+	void Update ()
     {
-
-    }
-	void Update () {
         Movement();
-
 	}
 
     void Movement()
@@ -49,16 +45,15 @@ public class Player : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter(Collision coll)
+    void OnCollisionEnter(Collision other)
     {
-        if(coll.gameObject.tag == "Enemy")
+        if(other.gameObject.tag == "enemy" && isAlive)
         {
-            for(int i = 0; i < enemy.Length; i++)
+            for (int i = 0; i < enemies.Length; i++)
             {
-                Destroy(enemy[i]);
+                Destroy(enemies[0]);
+                isAlive = false;
             }
-            isAlive = false;
-            Debug.Log("El enemigo está vivo?" + isAlive);
-        } 
+        }
     }
 }
