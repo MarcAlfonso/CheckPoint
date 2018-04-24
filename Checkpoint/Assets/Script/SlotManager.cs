@@ -10,6 +10,7 @@ public class SlotManager : MonoBehaviour
     public Button load_1, load_2, load_3, save_1, save_2, save_3;
     public Player pa;
     private Vector3 player_position;
+    public GameObject slot_name_1, slot_name_2, slot_name_3;
 
     void Start()
     {
@@ -19,7 +20,6 @@ public class SlotManager : MonoBehaviour
         load_1 = GetComponent<Button>();
         load_2 = GetComponent<Button>();
         load_3 = GetComponent<Button>();
-
     }
 
     /*********************************************************************************************************************************************************************************************************************/
@@ -103,6 +103,9 @@ public class SlotManager : MonoBehaviour
 
             pa.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
             file.Close();
+        }else
+        {
+            slot_name_1.SetActive(true);
         }
     }
 
@@ -118,6 +121,10 @@ public class SlotManager : MonoBehaviour
             pa.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
             file.Close();
         }
+        else
+        {
+            slot_name_2.SetActive(true);
+        }
     }
 
     public void Load_Slot_Three()
@@ -131,6 +138,10 @@ public class SlotManager : MonoBehaviour
 
             pa.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
             file.Close();
+        }
+        else
+        {
+            slot_name_3.SetActive(true);
         }
     }
 
