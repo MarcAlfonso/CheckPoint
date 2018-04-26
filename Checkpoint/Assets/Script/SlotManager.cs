@@ -10,8 +10,9 @@ public class SlotManager : MonoBehaviour
     public Button load_1, load_2, load_3, save_1, save_2, save_3;
     public Player pa;
     private Vector3 player_position;
-    public GameObject slot_name_1, slot_name_2, slot_name_3;
-
+    public GameObject slot_1, slot_2, slot_3;
+    public InputField inputfield_1, inputfield_2, inputfield_3;
+    private string SlotName;
     void Start()
     {
         save_1 = GetComponent<Button>();
@@ -20,6 +21,24 @@ public class SlotManager : MonoBehaviour
         load_1 = GetComponent<Button>();
         load_2 = GetComponent<Button>();
         load_3 = GetComponent<Button>();
+
+        inputfield_1 = GetComponent<InputField>();
+        inputfield_2 = GetComponent<InputField>();
+        inputfield_3 = GetComponent<InputField>();
+
+        /*slot_1 = GameObject.Find("SlotName1");
+        inputfield_1 = slot_1.GetComponent<InputField>();
+
+        slot_2 = GameObject.Find("SlotName2");
+        inputfield_2 = slot_2.GetComponent<InputField>();
+
+        slot_3 = GameObject.Find("SlotName2");
+        inputfield_3 = slot_3.GetComponent<InputField>();*/
+    }
+
+    void Update()
+    {
+
     }
 
     /*********************************************************************************************************************************************************************************************************************/
@@ -103,9 +122,14 @@ public class SlotManager : MonoBehaviour
 
             pa.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
             file.Close();
-        }else
+        }
+        else
         {
-            slot_name_1.SetActive(true);
+            slot_1.SetActive(true);
+            if(inputfield_1.text != "")  //Si en el inputfield hay texto, quitamos la interactividad
+            {
+                slot_1.SetActive(false);
+            }
         }
     }
 
@@ -123,7 +147,11 @@ public class SlotManager : MonoBehaviour
         }
         else
         {
-            slot_name_2.SetActive(true);
+            slot_2.SetActive(true);
+            if (inputfield_2.text != "")  //Si en el inputfield hay texto, quitamos la interactividad
+            {
+                slot_2.SetActive(false);
+            }
         }
     }
 
@@ -141,7 +169,11 @@ public class SlotManager : MonoBehaviour
         }
         else
         {
-            slot_name_3.SetActive(true);
+            slot_3.SetActive(true);
+            if (inputfield_3.text != "")  //Si en el inputfield hay texto, quitamos la interactividad
+            {
+                slot_3.SetActive(false);
+            }
         }
     }
 
