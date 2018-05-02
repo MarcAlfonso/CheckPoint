@@ -13,6 +13,7 @@ public class SlotManager : MonoBehaviour
     public GameObject slot_1, slot_2, slot_3;
     public InputField inputfield_1, inputfield_2, inputfield_3;
     private string SlotName;
+    private bool isEnemyAlive = true;
     void Start()
     {
         save_1 = GetComponent<Button>();
@@ -45,66 +46,64 @@ public class SlotManager : MonoBehaviour
     /*********************************************************************************************************************************************************************************************************************/
     public void Save_Slot_One()
     {
-        player_position = pa.transform.position;
 
-        if (!Directory.Exists("Slot_1"))
+        if (!File.Exists("save_one.sav"))
         {
-            Directory.CreateDirectory("Slot_1");
+            slot_1.SetActive(true);
+            player_position = pa.transform.position;
+
+            FileStream file = File.Create("save_one.sav");
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            Position pos = new Position();
+            pos.pos.x = player_position.x;
+            pos.pos.y = player_position.y;
+            pos.pos.z = player_position.z;
+
+            formatter.Serialize(file, pos);
+            file.Close();
         }
-
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream file = File.Create("save_one.sav");
-
-        Position pos = new Position();
-        pos.pos.x = player_position.x;
-        pos.pos.y = player_position.y;
-        pos.pos.z = player_position.z;
-
-        formatter.Serialize(file, pos);
-        file.Close();
     }
 
     public void Save_Slot_Two()
     {
-        player_position = pa.transform.position;
-
-        if (!Directory.Exists("Slot_2"))
+        if (!File.Exists("save_two.sav"))
         {
-            Directory.CreateDirectory("Slot_2");
+            slot_2.SetActive(true);
+            player_position = pa.transform.position;
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream file = File.Create("save_two.sav");
+
+            Position pos = new Position();
+            pos.pos.x = player_position.x;
+            pos.pos.y = player_position.y;
+            pos.pos.z = player_position.z;
+
+            formatter.Serialize(file, pos);
+            file.Close();
         }
-
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream file = File.Create("save_two.sav");
-
-        Position pos = new Position();
-        pos.pos.x = player_position.x;
-        pos.pos.y = player_position.y;
-        pos.pos.z = player_position.z;
-
-        formatter.Serialize(file, pos);
-        file.Close();
     }
 
 
     public void Save_Slot_Three()
     {
-        player_position = pa.transform.position;
-
-        if (!Directory.Exists("Slot_3"))
+        if (!File.Exists("save_three.sav"))
         {
-            Directory.CreateDirectory("Slot_3");
+            slot_3.SetActive(true);
+            player_position = pa.transform.position;
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream file = File.Create("save_three.sav");
+
+            Position pos = new Position();
+            pos.pos.x = player_position.x;
+            pos.pos.y = player_position.y;
+            pos.pos.z = player_position.z;
+
+            formatter.Serialize(file, pos);
+            file.Close();
         }
-
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream file = File.Create("save_three.sav");
-
-        Position pos = new Position();
-        pos.pos.x = player_position.x;
-        pos.pos.y = player_position.y;
-        pos.pos.z = player_position.z;
-
-        formatter.Serialize(file, pos);
-        file.Close();
     }
 
     /********************************************************************************************************************************************************************************************************************/
@@ -123,14 +122,6 @@ public class SlotManager : MonoBehaviour
             pa.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
             file.Close();
         }
-        else
-        {
-            slot_1.SetActive(true);
-            if(inputfield_1.text != "")  //Si en el inputfield hay texto, quitamos la interactividad
-            {
-                slot_1.SetActive(false);
-            }
-        }
     }
 
     public void Load_Slot_Two()
@@ -145,14 +136,6 @@ public class SlotManager : MonoBehaviour
             pa.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
             file.Close();
         }
-        else
-        {
-            slot_2.SetActive(true);
-            if (inputfield_2.text != "")  //Si en el inputfield hay texto, quitamos la interactividad
-            {
-                slot_2.SetActive(false);
-            }
-        }
     }
 
     public void Load_Slot_Three()
@@ -166,14 +149,6 @@ public class SlotManager : MonoBehaviour
 
             pa.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
             file.Close();
-        }
-        else
-        {
-            slot_3.SetActive(true);
-            if (inputfield_3.text != "")  //Si en el inputfield hay texto, quitamos la interactividad
-            {
-                slot_3.SetActive(false);
-            }
         }
     }
 
