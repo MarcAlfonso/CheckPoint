@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.Serialization;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 
 
@@ -12,13 +9,14 @@ public class Player : MonoBehaviour {
     public float speed = 20f;
     public float force = 20f;
     [HideInInspector]public int score = 0;
-    public GameObject[] enemies;
+    private GameObject[] enemies;
 
     [HideInInspector]public bool isAlive = true; //Miramos si el enemigo está vivo
     	
 	void Update ()
     {
         Movement();
+        enemies = GameObject.FindGameObjectsWithTag("enemy");
 	}
 
     void Movement()
@@ -47,15 +45,11 @@ public class Player : MonoBehaviour {
 
     void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag == "enemy" && isAlive)
+        if (other.gameObject.tag == "enemy" && isAlive)
         {
-            
-            for (int i = 0; i < enemies.Length; i++)
-            {
-                if (enemies[i] == other.gameObject)
-                    Destroy(other.gameObject);
-                isAlive = false;
-            }
+            Destroy(other.gameObject);
+            isAlive = false;
         }
+        isAlive = true;
     }
 }

@@ -13,7 +13,6 @@ public class SlotManager : MonoBehaviour
     public GameObject slot_1, slot_2, slot_3;
     public InputField inputfield_1, inputfield_2, inputfield_3;
     private string SlotName;
-    private bool isEnemyAlive = true;
     void Start()
     {
         save_1 = GetComponent<Button>();
@@ -37,11 +36,6 @@ public class SlotManager : MonoBehaviour
         inputfield_3 = slot_3.GetComponent<InputField>();*/
     }
 
-    void Update()
-    {
-
-    }
-
     /*********************************************************************************************************************************************************************************************************************/
     /*********************************************************************************************************************************************************************************************************************/
     public void Save_Slot_One()
@@ -59,6 +53,8 @@ public class SlotManager : MonoBehaviour
             pos.pos.x = player_position.x;
             pos.pos.y = player_position.y;
             pos.pos.z = player_position.z;
+            pos.isAlive = pa.isAlive;
+            Debug.Log(pos.isAlive);
 
             formatter.Serialize(file, pos);
             file.Close();
@@ -79,6 +75,8 @@ public class SlotManager : MonoBehaviour
             pos.pos.x = player_position.x;
             pos.pos.y = player_position.y;
             pos.pos.z = player_position.z;
+            pos.isAlive = pa.isAlive;
+            Debug.Log(pos.isAlive);
 
             formatter.Serialize(file, pos);
             file.Close();
@@ -100,6 +98,8 @@ public class SlotManager : MonoBehaviour
             pos.pos.x = player_position.x;
             pos.pos.y = player_position.y;
             pos.pos.z = player_position.z;
+            pos.isAlive = pa.isAlive;
+            Debug.Log(pos.isAlive);
 
             formatter.Serialize(file, pos);
             file.Close();
@@ -170,6 +170,7 @@ public class SlotManager : MonoBehaviour
                 z = _z;
             }
         }
+        public bool isAlive = true;
         public Vector3 pos = new Vector3(0, 0, 0);
     }
 }
