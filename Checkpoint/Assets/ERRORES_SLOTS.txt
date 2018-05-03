@@ -1,0 +1,3 @@
+Ocurre algo con la funcion de save, ahora solo guarda una vez.
+
+Guardado del estado de los enemigos en proceso, intentar acabarlo.
