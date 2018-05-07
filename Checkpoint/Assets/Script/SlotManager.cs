@@ -113,7 +113,7 @@ public class SlotManager : MonoBehaviour
             FileStream file = File.OpenRead(filename);
 
             Position data = (Position)bf.Deserialize(file);
-            Debug.Log("Vector pos: " + data.posPlayer.x + ", " + data.posPlayer.y + ", " + data.posPlayer.z);
+            //Debug.Log("Vector pos: " + data.posPlayer.x + ", " + data.posPlayer.y + ", " + data.posPlayer.z);
             pa.transform.position = new Vector3(data.posPlayer.x, data.posPlayer.y, data.posPlayer.z);
 
             for (int i = 0; i < enemies.Length; i++)
