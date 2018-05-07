@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SlotManager : MonoBehaviour
 {
 
-
+    public GameObject[] enemies;
     public Button load_1, load_2, load_3, save_1, save_2, save_3;
     public Player pa;
     private Vector3 player_position;
@@ -15,72 +15,79 @@ public class SlotManager : MonoBehaviour
     private string SlotName;
     void Start()
     {
-        save_1 = GetComponent<Button>();
-        save_2 = GetComponent<Button>();
-        save_3 = GetComponent<Button>();
-        load_1 = GetComponent<Button>();
-        load_2 = GetComponent<Button>();
-        load_3 = GetComponent<Button>();
+        inputfield_1.text = "SLOT 1";
+        inputfield_2.text = "SLOT 2";
+        inputfield_3.text = "SLOT 3";
 
-        inputfield_1 = GetComponent<InputField>();
-        inputfield_2 = GetComponent<InputField>();
-        inputfield_3 = GetComponent<InputField>();
+        slot_1.GetComponentInChildren<SlotTitle>().input = inputfield_1;
+        slot_2.GetComponentInChildren<SlotTitle>().input = inputfield_2;
+        slot_3.GetComponentInChildren<SlotTitle>().input = inputfield_3;
+    }
 
-        /*slot_1 = GameObject.Find("SlotName1");
-        inputfield_1 = slot_1.GetComponent<InputField>();
-
-        slot_2 = GameObject.Find("SlotName2");
-        inputfield_2 = slot_2.GetComponent<InputField>();
-
-        slot_3 = GameObject.Find("SlotName2");
-        inputfield_3 = slot_3.GetComponent<InputField>();*/
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            inputfield_1.gameObject.SetActive(false);
+            inputfield_2.gameObject.SetActive(false);
+            inputfield_3.gameObject.SetActive(false);
+        }
     }
 
     /*********************************************************************************************************************************************************************************************************************/
     /*********************************************************************************************************************************************************************************************************************/
+
+    void Save(string filename)
+    {
+        player_position = pa.transform.position;
+        FileStream file = File.Open(filename, FileMode.Create);
+        BinaryFormatter formatter = new BinaryFormatter();
+
+        Position pos = new Position();
+        pos.posPlayer.x = player_position.x;
+        pos.posPlayer.y = player_position.y;
+        pos.posPlayer.z = player_position.z;
+        pos.playerIsAlive = true;
+
+        pos.enemyIsAlive = new bool[enemies.Length];
+        pos.posEnemies = new Position.Vector3[enemies.Length];
+
+        int i = 0;
+        foreach (GameObject enemy in enemies)
+        {
+            pos.posEnemies[i].x = enemy.transform.position.x;
+            pos.posEnemies[i].y = enemy.transform.position.y;
+            pos.posEnemies[i].z = enemy.transform.position.z;
+            pos.enemyIsAlive[i] = enemy.activeInHierarchy;
+            i++;
+        }
+
+        formatter.Serialize(file, pos);
+
+        file.Close();
+    }
+
+
     public void Save_Slot_One()
     {
-
         if (!File.Exists("save_one.sav"))
         {
-            slot_1.SetActive(true);
-            player_position = pa.transform.position;
-
-            FileStream file = File.Create("save_one.sav");
-            BinaryFormatter formatter = new BinaryFormatter();
-
-            Position pos = new Position();
-            pos.pos.x = player_position.x;
-            pos.pos.y = player_position.y;
-            pos.pos.z = player_position.z;
-            pos.isAlive = pa.isAlive;
-            Debug.Log(pos.isAlive);
-
-            formatter.Serialize(file, pos);
-            file.Close();
+            Debug.Log("Activating input");
+            inputfield_1.gameObject.SetActive(true);
+            inputfield_1.ActivateInputField();
         }
+        Save("save_one.sav");
     }
 
     public void Save_Slot_Two()
     {
         if (!File.Exists("save_two.sav"))
         {
-            slot_2.SetActive(true);
-            player_position = pa.transform.position;
-
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream file = File.Create("save_two.sav");
-
-            Position pos = new Position();
-            pos.pos.x = player_position.x;
-            pos.pos.y = player_position.y;
-            pos.pos.z = player_position.z;
-            pos.isAlive = pa.isAlive;
-            Debug.Log(pos.isAlive);
-
-            formatter.Serialize(file, pos);
-            file.Close();
+            Debug.Log("Activating input");
+            inputfield_2.gameObject.SetActive(true);
+            inputfield_2.ActivateInputField();
         }
+        Save("save_two.sav");
     }
 
 
@@ -88,68 +95,50 @@ public class SlotManager : MonoBehaviour
     {
         if (!File.Exists("save_three.sav"))
         {
-            slot_3.SetActive(true);
-            player_position = pa.transform.position;
-
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream file = File.Create("save_three.sav");
-
-            Position pos = new Position();
-            pos.pos.x = player_position.x;
-            pos.pos.y = player_position.y;
-            pos.pos.z = player_position.z;
-            pos.isAlive = pa.isAlive;
-            Debug.Log(pos.isAlive);
-
-            formatter.Serialize(file, pos);
-            file.Close();
+            Debug.Log("Activating input");
+            inputfield_3.gameObject.SetActive(true);
+            inputfield_3.ActivateInputField();
         }
+        Save("save_three.sav");
     }
 
     /********************************************************************************************************************************************************************************************************************/
     /********************************************************************************************************************************************************************************************************************/
 
-    public void Load_Slot_One()
+     void Load(string filename)
     {
-
-        if (File.Exists("save_one.sav"))
+        if (File.Exists(filename))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.OpenRead("save_one.sav");
+            FileStream file = File.OpenRead(filename);
 
             Position data = (Position)bf.Deserialize(file);
+            Debug.Log("Vector pos: " + data.posPlayer.x + ", " + data.posPlayer.y + ", " + data.posPlayer.z);
+            pa.transform.position = new Vector3(data.posPlayer.x, data.posPlayer.y, data.posPlayer.z);
 
-            pa.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                enemies[i].transform.position = new Vector3(data.posEnemies[i].x, data.posEnemies[i].y, data.posEnemies[i].z);
+                enemies[i].SetActive(data.enemyIsAlive[i]);
+            }
+
             file.Close();
-        }
+        }else Debug.Log("File " + filename + "doesn't exist!");
+    }
+
+    public void Load_Slot_One()
+    {
+        Load("save_one.sav");
     }
 
     public void Load_Slot_Two()
     {
-        if (File.Exists("save_two.sav"))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.OpenRead("save_two.sav");
-
-            Position data = (Position)bf.Deserialize(file);
-
-            pa.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
-            file.Close();
-        }
+        Load("save_two.sav");
     }
 
     public void Load_Slot_Three()
     {
-        if (File.Exists("save_three.sav"))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.OpenRead("save_three.sav");
-
-            Position data = (Position)bf.Deserialize(file);
-
-            pa.transform.position = new Vector3(data.pos.x, data.pos.y, data.pos.z);
-            file.Close();
-        }
+        Load("save_three.sav");
     }
 
     /********************************************************************************************************************************************************************************************************************/
@@ -170,7 +159,10 @@ public class SlotManager : MonoBehaviour
                 z = _z;
             }
         }
-        public bool isAlive = true;
-        public Vector3 pos = new Vector3(0, 0, 0);
+        public bool playerIsAlive = true;
+        public Vector3 posPlayer = new Vector3(0, 0, 0);
+
+        public Vector3[] posEnemies;
+        public bool[] enemyIsAlive;
     }
 }

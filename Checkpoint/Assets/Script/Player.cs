@@ -47,7 +47,7 @@ public class Player : MonoBehaviour {
     {
         if (other.gameObject.tag == "enemy" && isAlive)
         {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
             isAlive = false;
         }
         isAlive = true;
