@@ -1,47 +1,55 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
-public class LoadingScreen : MonoBehaviour {
+public class LoadingScreen : MonoBehaviour
+{
 
     AsyncOperation async;
     public int mainScene;
-    private bool changeScene = true;
+    private bool changeScene = false;
+    private float loadProgress = 0f;
 
-    public void ChangeScene()
+    void Update()
     {
-        if (changeScene)
+        if (!changeScene)
         {
-            StartCoroutine(LoadingTime());
-            SceneManager.LoadScene(mainScene);
+            NewScene();
         }else
         {
-            Debug.Log("error while opening the new scene!");
+            Debug.Log("Error changing the scene");
         }
     }
 
+    public void NewScene()
+    {
+        if (!changeScene)
+            StartCoroutine(LoadingTime());
+        else
+            StartCoroutine(LoadingTime());
+    }
+    
 
     IEnumerator LoadingTime()
     {
-        yield return new WaitForSeconds(3f);
-
+        yield return new WaitForSeconds(8f);
         async = SceneManager.LoadSceneAsync(mainScene);
         async.allowSceneActivation = false;
 
-        while(!async.isDone)
-        {
-            yield return new WaitForSeconds(2f);
-            if (async.isDone)
+        while (!async.isDone)
+        { 
+            loadProgress = async.progress;
+            loadProgress += 0.1f;
+            if (async.progress == 0.9f)
             {
+                //Debug.Log("Cambiando de escena...");
                 async.allowSceneActivation = true;
-                SceneManager.LoadScene(mainScene);
             }
-            Debug.Log(async.progress);
+            //Debug.Log(async.progress);
             yield return null;
         }
-
+        Debug.Log("Escena cambiada exitosamente!!");
     }
 }
