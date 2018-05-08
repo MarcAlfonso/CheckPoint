@@ -18,14 +18,26 @@ public class MainMenu : MonoBehaviour {
 		
 	}
 
-    public void ClickNewGameButton()
+    public void NewGame()
     {
-        StartCoroutine(SceneChange());
+        StartCoroutine(NewGameScene());
     }
 
-    IEnumerator SceneChange()
+    public void Options()
     {
+        StartCoroutine(OptionsScene());
+    }
+    IEnumerator NewGameScene()
+    {
+        Debug.Log("Going to game scene...");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("GameScene");
+    }
+
+    IEnumerator OptionsScene()
+    {
+        Debug.Log("Going to options scene...");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("OptionsTest");
     }
 }

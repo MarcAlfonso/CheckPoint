@@ -140,7 +140,7 @@ Prefab:
     - target: {fileID: 114822083104466662, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114219705113061980, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
         type: 2}
@@ -320,12 +320,12 @@ Prefab:
     - target: {fileID: 114822083104466662, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClickButton
+      value: NewGame
       objectReference: {fileID: 0}
     - target: {fileID: 114219705113061980, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClickButton
+      value: Options
       objectReference: {fileID: 0}
     - target: {fileID: 114219705113061980, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
         type: 2}
@@ -337,6 +337,21 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1560328498}
+    - target: {fileID: 114822083104466662, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114822083104466662, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114822083104466662, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abd60021b91bf9c4d8450d7fbf0a38b0, type: 2}
   m_IsPrefabParent: 0
