@@ -270,7 +270,7 @@ Prefab:
     - target: {fileID: 114586344521243680, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClickButton
+      value: Continue
       objectReference: {fileID: 0}
     - target: {fileID: 114586344521243680, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
         type: 2}
@@ -458,6 +458,7 @@ MonoBehaviour:
   continueButton: {fileID: 207435429}
   newGameButton: {fileID: 448204251}
   optionsButton: {fileID: 1468723123}
+  gameData: {fileID: 0}
 --- !u!4 &1560328499
 Transform:
   m_ObjectHideFlags: 0

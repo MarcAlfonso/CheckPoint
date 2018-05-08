@@ -13,7 +13,7 @@ public class GameData : MonoBehaviour
 
 
     //PRIVATE VARIABLES
-    private string path = "save.sav";
+    [HideInInspector]public string path = "save.sav";
     private Player pa;
     private Vector3 playerPosition;
     private bool isEnemyAlive = true;
