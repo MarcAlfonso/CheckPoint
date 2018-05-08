@@ -5,7 +5,7 @@ using UnityEngine;
 public class Collisions : MonoBehaviour
 {
 
-    private bool isCollidedDeath = false;
+    /*private bool isCollidedDeath = false;
     [HideInInspector]public bool isCollidedCheckP = false;
     private bool cpActivated = false;
     private bool isColorChanged = false;
@@ -21,7 +21,7 @@ public class Collisions : MonoBehaviour
     void Update()
     {
 
-    }
+    }*/
 
 
     

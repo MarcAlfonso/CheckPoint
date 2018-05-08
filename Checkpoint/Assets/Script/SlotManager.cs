@@ -8,7 +8,7 @@ public class SlotManager : MonoBehaviour
 
     public GameObject[] enemies;
     public Button load_1, load_2, load_3, save_1, save_2, save_3;
-    public Player pa;
+    public Player player;
     private Vector3 player_position;
     public GameObject slot_1, slot_2, slot_3;
     public InputField inputfield_1, inputfield_2, inputfield_3;
@@ -39,7 +39,7 @@ public class SlotManager : MonoBehaviour
 
     void Save(string filename)
     {
-        player_position = pa.transform.position;
+        player_position = player.transform.position;
         FileStream file = File.Open(filename, FileMode.Create);
         BinaryFormatter formatter = new BinaryFormatter();
 
@@ -114,7 +114,7 @@ public class SlotManager : MonoBehaviour
 
             Position data = (Position)bf.Deserialize(file);
             //Debug.Log("Vector pos: " + data.posPlayer.x + ", " + data.posPlayer.y + ", " + data.posPlayer.z);
-            pa.transform.position = new Vector3(data.posPlayer.x, data.posPlayer.y, data.posPlayer.z);
+            player.transform.position = new Vector3(data.posPlayer.x, data.posPlayer.y, data.posPlayer.z);
 
             for (int i = 0; i < enemies.Length; i++)
             {

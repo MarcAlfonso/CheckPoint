@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: c081c4776ea5a914699acb42d2d4bdeb
+timeCreated: 1525789916
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Sole Survivor Regular
+  fontNames:
+  - Sole Survivor Regular
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

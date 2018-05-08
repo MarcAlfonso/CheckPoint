@@ -11,31 +11,26 @@ public class LoadingScreen : MonoBehaviour
     public int mainScene;
     private bool changeScene = false;
     private float loadProgress = 0f;
+    //  public int loadTime;
 
     void Update()
     {
         if (!changeScene)
-        {
             NewScene();
-        }else
-        {
+        else
             Debug.Log("Error changing the scene");
-        }
     }
 
     public void NewScene()
     {
         if (!changeScene)
-            StartCoroutine(LoadingTime());
-        else
-            StartCoroutine(LoadingTime());
+            LoadingTime();
     }
-    
 
-    IEnumerator LoadingTime()
+
+    void LoadingTime()
     {
-        yield return new WaitForSeconds(8f);
-        async = SceneManager.LoadSceneAsync(mainScene);
+        /*async = SceneManager.LoadSceneAsync(mainScene);
         async.allowSceneActivation = false;
 
         while (!async.isDone)
@@ -44,12 +39,10 @@ public class LoadingScreen : MonoBehaviour
             loadProgress += 0.1f;
             if (async.progress == 0.9f)
             {
-                //Debug.Log("Cambiando de escena...");
                 async.allowSceneActivation = true;
             }
-            //Debug.Log(async.progress);
-            yield return null;
         }
         Debug.Log("Escena cambiada exitosamente!!");
+    }*/
     }
 }
