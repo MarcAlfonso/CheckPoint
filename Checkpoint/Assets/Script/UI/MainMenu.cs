@@ -3,13 +3,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.IO;
+using TMPro;
 
 public class MainMenu : MonoBehaviour {
 
     public Button continueButton, newGameButton, optionsButton;
     public GameData gameData;
-
-
+    public TextMeshProUGUI text;
+    public Sprite buttonDefault;
     void Awake()
     {
         Continue(); //interactable = true + cargamos el Load
@@ -17,8 +18,7 @@ public class MainMenu : MonoBehaviour {
 
     void Start()
     {
-        //continueButton = GetComponent<Button>();
-        //gameData = FindObjectOfType
+        text = GetComponent<TextMeshProUGUI>();
     }
 
 
@@ -38,6 +38,8 @@ public class MainMenu : MonoBehaviour {
         {
             continueButton.interactable = true;
             gameData.LoadGame();
+            text.color = new Color(255, 255, 255);
+            continueButton.GetComponent<Image>().sprite = buttonDefault;
         }
         else
             Debug.Log("The file doesnt exists!");
@@ -50,21 +52,21 @@ public class MainMenu : MonoBehaviour {
     IEnumerator NewGameScene()
     {
         Debug.Log("Going to game scene...");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0f);
         SceneManager.LoadScene("GameScene");
     }
 
     IEnumerator OptionsScene()
     {
         Debug.Log("Going to options scene...");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0f);
         SceneManager.LoadScene("OptionsTest");
     }
 
     IEnumerator ContinueScene()
     {
         //Debug.Log("Continuing the game...");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0f);
         SceneManager.LoadScene("GameScene");
     }
 }

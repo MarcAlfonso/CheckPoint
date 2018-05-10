@@ -10,7 +10,6 @@ public class GameData : MonoBehaviour
     //PUBLIC VARIABLES
     public GameObject player;
     public Button load;
-    public GameObject pauseMenu;
 
 
     //PRIVATE VARIABLES
@@ -23,26 +22,12 @@ public class GameData : MonoBehaviour
     void Start()
     {
         load = GetComponent<Button>();
-        pauseMenu.SetActive(false);
-    }
-
-    void Update()
-    {
-        PauseGame();
     }
 
     //AL PRESIONAR EL BOTON LOAD LLAMAMOS A LA FUNCION QUE CARGA EL FICHERO CON LA NUEVA POSICION
     public void OnClickLoad()
     {
         LoadGame();
-    }
-
-    public void PauseGame()
-    {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            pauseMenu.SetActive(true);
-        }
     }
 
     //FUNCIÓN PARA GUARDAR LA POSICIÓN DEL PLAYER

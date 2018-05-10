@@ -6,7 +6,7 @@ public class CheckPoint : MonoBehaviour
 {
     //Public variables
     public GameObject checkPoint, ObjToRend;
-    public bool isCollidedCheckP = false;
+    public GameObject deadMenu;
 
     //Private variables
     private Vector3 checkPos, playerPos;
@@ -16,7 +16,8 @@ public class CheckPoint : MonoBehaviour
     private bool cpActivated = false;
     private bool isColorChanged = false;
     private GameData gd;
-    
+    private bool isCollidedCheckP = false;
+
 
 
     void Start()
@@ -36,11 +37,13 @@ public class CheckPoint : MonoBehaviour
             ChangeColor();
             gd.SaveGame();            
             isCollidedCheckP = true;
+            //DieAndSpawn();
         }
         if (col.tag == "death")
         {
             isCollidedDeath = true;
             transform.position = Vector3.zero;
+            deadMenu.SetActive(true);
         }
         if (isCollidedDeath && isCollidedCheckP)
         {
