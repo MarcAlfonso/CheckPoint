@@ -470,6 +470,7 @@ GameObject:
   - component: {fileID: 758755739}
   - component: {fileID: 758755738}
   - component: {fileID: 758755740}
+  - component: {fileID: 758755741}
   m_Layer: 5
   m_Name: PressText
   m_TagString: Untagged
@@ -551,6 +552,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!111 &758755741
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 758755736}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 5734048118d2c2446aa4912bbb2e3c0f, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1558670346
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,11 +9,19 @@ public class MainMenu : MonoBehaviour {
     public Button continueButton, newGameButton, optionsButton;
     public GameData gameData;
 
+
+    void Awake()
+    {
+        Continue(); //interactable = true + cargamos el Load
+    }
+
     void Start()
     {
-        continueButton = GetComponent<Button>();
+        //continueButton = GetComponent<Button>();
         //gameData = FindObjectOfType
     }
+
+
     public void NewGame()
     {
         StartCoroutine(NewGameScene());
@@ -26,12 +34,18 @@ public class MainMenu : MonoBehaviour {
 
     public void Continue()
     {
-        if(File.Exists("save.sav"))
+        if (File.Exists(gameData.path))
         {
-            StartCoroutine(ContinueScene());
-            continueButton.enabled = false;
             continueButton.interactable = true;
+            gameData.LoadGame();
         }
+        else
+            Debug.Log("The file doesnt exists!");
+    }
+
+    public void ContinueGame()
+    {
+        StartCoroutine(ContinueScene());
     }
     IEnumerator NewGameScene()
     {
@@ -49,7 +63,7 @@ public class MainMenu : MonoBehaviour {
 
     IEnumerator ContinueScene()
     {
-        Debug.Log("Continuing the game...");
+        //Debug.Log("Continuing the game...");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("GameScene");
     }

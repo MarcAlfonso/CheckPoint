@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class StartScreen : MonoBehaviour {
 
+    //public Animation anim;
 	// Use this for initialization
 	void Start () {
+        //anim = GetComponent<Animation>();
 		
 	}
 	
@@ -19,7 +21,14 @@ public class StartScreen : MonoBehaviour {
     {
         if(Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene("GameScene");
+            StartCoroutine(ChangeAnim());
         }
+    }
+
+    IEnumerator ChangeAnim()
+    {
+        //anim["PressText"].speed = 10f;
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("MainMenu");
     }
 }

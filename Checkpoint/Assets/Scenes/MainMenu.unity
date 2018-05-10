@@ -270,7 +270,7 @@ Prefab:
     - target: {fileID: 114586344521243680, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Continue
+      value: ContinueGame
       objectReference: {fileID: 0}
     - target: {fileID: 114586344521243680, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
         type: 2}
@@ -336,7 +336,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1560328498}
+      objectReference: {fileID: 0}
     - target: {fileID: 114822083104466662, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -351,6 +351,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114586344521243680, guid: abd60021b91bf9c4d8450d7fbf0a38b0,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abd60021b91bf9c4d8450d7fbf0a38b0, type: 2}
@@ -437,6 +442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1560328499}
   - component: {fileID: 1560328498}
+  - component: {fileID: 1560328500}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -452,13 +458,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1560328497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 901a8a157b359e14e87a1071f8635965, type: 3}
+  m_Script: {fileID: 11500000, guid: 083910520fca87540bade334f4da9d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   continueButton: {fileID: 207435429}
   newGameButton: {fileID: 448204251}
   optionsButton: {fileID: 1468723123}
-  gameData: {fileID: 0}
+  gameData: {fileID: 1560328500}
 --- !u!4 &1560328499
 Transform:
   m_ObjectHideFlags: 0
@@ -472,6 +478,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1560328500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1560328497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32eb2b05ae547be43a4455adc0935403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1642850054115614, guid: 3654e946934b11840a015e78e8362034, type: 2}
+  load: {fileID: 114205496314788958, guid: a844e6bde5c66124898bf7af51e18f48, type: 2}
+  pauseMenu: {fileID: 1985146858872976, guid: 9f622f88be6e85a4a838f2bf24027f8e, type: 2}
+  path: save.sav
 --- !u!1 &1721981003
 GameObject:
   m_ObjectHideFlags: 0
