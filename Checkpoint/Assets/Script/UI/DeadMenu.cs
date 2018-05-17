@@ -9,7 +9,7 @@ using TMPro;
 public class DeadMenu : MonoBehaviour
 {
 
-    public GameObject deadMenu;
+    public GameObject deadMenu, optionsMenu;
     public Button restart, options, exit, loadButton;
     public GameData gameData;
     public TextMeshProUGUI loadText;
@@ -17,6 +17,10 @@ public class DeadMenu : MonoBehaviour
     void Awake()
     {
         LoadCheckpoint();
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            optionsMenu.SetActive(false);
+        }
     }
 
     // Use this for initialization
@@ -28,12 +32,12 @@ public class DeadMenu : MonoBehaviour
 
     public void ExitGame()
     {
-        StartCoroutine(Exit());
+        SceneManager.LoadScene("StartScreen");
     }
 
-    public void OptionsScene()
+    public void Options()
     {
-        StartCoroutine(Options());
+        optionsMenu.SetActive(true);
     }
 
     public void RestartScene()
@@ -53,19 +57,11 @@ public class DeadMenu : MonoBehaviour
     public void LoadLevel()
     {
         gameData.LoadGame();
+        deadMenu.SetActive(false);
     }
 
-    IEnumerator Exit()
-    {
-        yield return new WaitForSeconds(0f);
-        SceneManager.LoadScene("StartScreen");
-    }
+    
 
-    IEnumerator Options()
-    {
-        yield return new WaitForSeconds(0f);
-        SceneManager.LoadScene("OptionsTest");
-    }
 
 
 

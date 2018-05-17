@@ -34,9 +34,9 @@ public class CheckPoint : MonoBehaviour
     {
         if (col.tag == "checkpoint")
         {
-            ChangeColor();
-            gd.SaveGame();            
+            col.gameObject.GetComponent<Renderer>().material.color = Color.white;
             isCollidedCheckP = true;
+            gd.SaveGame();
             //DieAndSpawn();
         }
         if (col.tag == "death")
@@ -50,7 +50,8 @@ public class CheckPoint : MonoBehaviour
             isCollidedCheckP = false;
             isCollidedDeath = false;
             ActivateCheckPoint();
-            DieAndSpawn();
+            transform.position = Vector3.zero;
+            //gd.LoadGame();
         }
 
     }

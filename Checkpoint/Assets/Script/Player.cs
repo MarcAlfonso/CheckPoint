@@ -21,23 +21,23 @@ public class Player : MonoBehaviour {
 
     void Movement()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(Vector3.left * Time.deltaTime * speed);
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             transform.Translate(Vector3.back * Time.deltaTime * speed);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(Vector3.right * Time.deltaTime * speed);
         }
-        else if (Input.GetKey(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
             transform.Translate(Vector3.up * Time.deltaTime * force);
         }

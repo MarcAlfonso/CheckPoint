@@ -1293,7 +1293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2564, y: 155.88495}
+  m_AnchoredPosition: {x: -2564, y: 594.9849}
   m_SizeDelta: {x: 378.9, y: 126.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &555045190
@@ -3339,7 +3339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkPoint: {fileID: 539346912}
   ObjToRend: {fileID: 1084187962}
-  isCollidedCheckP: 0
+  deadMenu: {fileID: 0}
 --- !u!1 &1420984512
 GameObject:
   m_ObjectHideFlags: 0
@@ -3682,7 +3682,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1511.968, y: 155.9}
+  m_AnchoredPosition: {x: -1511.968, y: 595}
   m_SizeDelta: {x: 378.9, y: 126.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1761832877
@@ -4207,7 +4207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2034.5, y: 155.88495}
+  m_AnchoredPosition: {x: -2034.5, y: 594.9849}
   m_SizeDelta: {x: 378.9, y: 126.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1990288856
@@ -4273,6 +4273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1387618773}
   load: {fileID: 26174381}
+  path: save.sav
 --- !u!4 &2025142726
 Transform:
   m_ObjectHideFlags: 0

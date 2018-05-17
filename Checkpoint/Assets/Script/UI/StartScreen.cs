@@ -21,14 +21,10 @@ public class StartScreen : MonoBehaviour {
     {
         if(Input.GetKeyDown(KeyCode.Return))
         {
-            StartCoroutine(ChangeAnim());
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
-    IEnumerator ChangeAnim()
-    {
-        //anim["PressText"].speed = 10f;
-        yield return new WaitForSeconds(.5f);
-        SceneManager.LoadScene("MainMenu");
-    }
+
+
 }

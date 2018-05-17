@@ -4523,7 +4523,7 @@ Prefab:
     - target: {fileID: 114433879518585940, guid: a493e2d60e96a8b499cc5748268b721b,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OptionsScene
+      value: Options
       objectReference: {fileID: 0}
     - target: {fileID: 114433879518585940, guid: a493e2d60e96a8b499cc5748268b721b,
         type: 2}
@@ -4939,6 +4939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deadMenu: {fileID: 1859904983}
+  optionsMenu: {fileID: 790258103}
   restart: {fileID: 747779208}
   options: {fileID: 364529066}
   exit: {fileID: 181778971}

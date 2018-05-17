@@ -13,7 +13,8 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         PauseGame();
-        OptionsMenu();
+        if (Input.GetKeyDown(KeyCode.Escape))
+            optionsMenu.SetActive(false);
     }
 
     public void PauseGame()
@@ -49,16 +50,8 @@ public class PauseMenu : MonoBehaviour
 
     public void OptionsMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !onOptionsMenu)
-        {
-            optionsMenu.SetActive(true);
-            onOptionsMenu = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && onOptionsMenu)
-        {
-            optionsMenu.SetActive(false);
-            onOptionsMenu = false;
-        }
+        optionsMenu.SetActive(true);
+
     }
 
 }
