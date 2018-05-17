@@ -7,7 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
 
     public Button resumeButton, optionsButton, exitButton;
-    public GameObject pauseMenu, optionsMenu;
+    public GameObject pauseMenu, optionsMenu, deadMenu;
     private bool paused = false, onOptionsMenu = false;
 
     void Update()
@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
         PauseGame();
         if (Input.GetKeyDown(KeyCode.Escape))
             optionsMenu.SetActive(false);
+
     }
 
     public void PauseGame()
@@ -51,7 +52,6 @@ public class PauseMenu : MonoBehaviour
     public void OptionsMenu()
     {
         optionsMenu.SetActive(true);
-
     }
 
 }

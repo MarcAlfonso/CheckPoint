@@ -9,7 +9,7 @@ using TMPro;
 public class DeadMenu : MonoBehaviour
 {
 
-    public GameObject deadMenu, optionsMenu;
+    public GameObject deadMenu, optionsMenu, pauseMenu;
     public Button restart, options, exit, loadButton;
     public GameData gameData;
     public TextMeshProUGUI loadText;

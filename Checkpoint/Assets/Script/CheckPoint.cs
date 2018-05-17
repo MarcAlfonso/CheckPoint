@@ -17,6 +17,7 @@ public class CheckPoint : MonoBehaviour
     private bool isColorChanged = false;
     private GameData gd;
     private bool isCollidedCheckP = false;
+    private bool isDeadMenuActive;
 
 
 
@@ -34,7 +35,7 @@ public class CheckPoint : MonoBehaviour
     {
         if (col.tag == "checkpoint")
         {
-            col.gameObject.GetComponent<Renderer>().material.color = Color.white;
+            col.gameObject.GetComponent<Renderer>().material.color = Color.white;  //Cambiamos el color del objeto con el que hemos chocadoi
             isCollidedCheckP = true;
             gd.SaveGame();
             //DieAndSpawn();
@@ -44,14 +45,16 @@ public class CheckPoint : MonoBehaviour
             isCollidedDeath = true;
             transform.position = Vector3.zero;
             deadMenu.SetActive(true);
+            isDeadMenuActive = true;
         }
         if (isCollidedDeath && isCollidedCheckP)
         {
             isCollidedCheckP = false;
             isCollidedDeath = false;
             ActivateCheckPoint();
-            transform.position = Vector3.zero;
-            //gd.LoadGame();
+            //transform.position = Vector3.zero;
+
+            gd.LoadGame();
         }
 
     }

@@ -4940,6 +4940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deadMenu: {fileID: 1859904983}
   optionsMenu: {fileID: 790258103}
+  pauseMenu: {fileID: 0}
   restart: {fileID: 747779208}
   options: {fileID: 364529066}
   exit: {fileID: 181778971}
@@ -4962,6 +4963,7 @@ MonoBehaviour:
   exitButton: {fileID: 1603264492}
   pauseMenu: {fileID: 1070657961}
   optionsMenu: {fileID: 790258103}
+  deadMenu: {fileID: 1859904983}
 --- !u!1 &2083608175
 GameObject:
   m_ObjectHideFlags: 0
