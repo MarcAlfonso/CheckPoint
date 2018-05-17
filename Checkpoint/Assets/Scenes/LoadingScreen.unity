@@ -219,8 +219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -524.41, y: -217.1}
-  m_SizeDelta: {x: 692.6, y: 58.4}
+  m_AnchoredPosition: {x: -558.69, y: -231.05}
+  m_SizeDelta: {x: 624.03, y: 86.31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &322571702
 MonoBehaviour:
@@ -243,7 +243,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0cc0e6f2c705e9748bfc93fc85414026, type: 3}
-    m_FontSize: 14
+    m_FontSize: 63
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
@@ -254,8 +254,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Usa las bombillas para no ser detectado. Tambi\xE9n puedes usarlas para
-    asesinar a los enemigos e incluso esconderte!"
+  m_Text: "Hackea los terminales para acceder a las camaras de vigilancia y ver lo
+    qu\xE9 te rodea\n"
 --- !u!222 &322571703
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -910,6 +910,31 @@ Prefab:
         type: 2}
       propertyPath: ColorModule.gradient.minGradient.key1.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198536992181986584, guid: 1eec58ce164832f419429f0faaea89f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198536992181986584, guid: 1eec58ce164832f419429f0faaea89f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198536992181986584, guid: 1eec58ce164832f419429f0faaea89f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198536992181986584, guid: 1eec58ce164832f419429f0faaea89f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198536992181986584, guid: 1eec58ce164832f419429f0faaea89f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 198536992181986584, guid: 1eec58ce164832f419429f0faaea89f5,
         type: 2}
