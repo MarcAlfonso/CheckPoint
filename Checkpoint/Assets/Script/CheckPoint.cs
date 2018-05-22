@@ -49,12 +49,11 @@ public class CheckPoint : MonoBehaviour
         }
         if (isCollidedDeath && isCollidedCheckP)
         {
+            //transform.position = Vector3.zero;
             isCollidedCheckP = false;
             isCollidedDeath = false;
             ActivateCheckPoint();
-            //transform.position = Vector3.zero;
-
-            gd.LoadGame();
+            //gd.LoadGame();
         }
 
     }
