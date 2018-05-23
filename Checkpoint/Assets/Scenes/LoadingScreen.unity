@@ -254,8 +254,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Hackea los terminales para acceder a las camaras de vigilancia y ver lo
-    qu\xE9 te rodea\n"
+  m_Text: "Hackea los terminales para abrir y bloquear puertas, incluso apagar c\xE1maras
+    y desactivar robots.\n"
 --- !u!222 &322571703
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -910,6 +910,36 @@ Prefab:
         type: 2}
       propertyPath: ColorModule.gradient.minGradient.key1.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198536992181986584, guid: 1eec58ce164832f419429f0faaea89f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198536992181986584, guid: 1eec58ce164832f419429f0faaea89f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198536992181986584, guid: 1eec58ce164832f419429f0faaea89f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198536992181986584, guid: 1eec58ce164832f419429f0faaea89f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198536992181986584, guid: 1eec58ce164832f419429f0faaea89f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198536992181986584, guid: 1eec58ce164832f419429f0faaea89f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 198536992181986584, guid: 1eec58ce164832f419429f0faaea89f5,
         type: 2}
